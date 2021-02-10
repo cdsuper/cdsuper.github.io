@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INSTAGRAM EFFECT</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <style>
+       @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Slab",serif;
+}
+html{
+    font-size: 62.5%;
+}
+
+.main-div{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main-div h1{
+    font-size: 4.5rem;
+    margin-bottom: 2rem;  
+    text-align: center;  
+}
+.main-div h1 span{
+    color: red;
+}
+
+.inner-div  {
+    /* background: url(https://i.ibb.co/G2fMdZm/Screenshot-20210118-105131-Gallery-01.jpg);
+    background-size: cover ;
+    background-position: right center; */
+    width: 40rem;
+    height: 50rem;
+    box-shadow: 0 1rem 2rem 0.2rem rgba(0,0,0,0.8);
+    position: relative;
+    
+}
+.inner-div video {
+    object-fit: cover;
+    width: 40rem;
+    height: 50rem;
+    box-shadow: 0 1rem 2rem 0.2rem rgba(0,0,0,0.8);
+    position: relative;
+    
+}
+
+.inner-div i{
+    position: absolute;
+    top:60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: red;
+    animation: heart 0.8s linear;
+    -webkit-animation: heart 0.8s linear ;
+    -webkit-animation: heart 0.8s linear ;
+     -ms-zoom-animation:  heart 0.8s linear ;
+     -o-animation:  heart 0.8s linear  ;
+     -moz-animation: heart 0.8s linear ;
+     z-index: 10;
+}
+@keyframes heart{
+    100%{
+        transform: scale(50);
+        opacity: 0;
+    }
+
+}
+
+   </style>
+</head>
+<body>
+    <div class="main-div">
+        <h1>Give some love by DOUBLE Tap <br>
+            You loved this <span class="clickCount">0</span> times </h1>
+        <div class="inner-div">
+            <!-- <img src="https://i.ibb.co/G2fMdZm/Screenshot-20210118-105131-Gallery-01.jpg" alt="Screenshot-20210118-105131-Gallery-01" border="0">
+            <img src="https://images.unsplash.com/photo-1533709038230-b099e6f76088?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8dG9wfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80" alt="tree image" > -->
+            <video id="videoElementId" >
+                <source src="jina.mp4" type="video/mp4">
+            </video>
+           
+        </div>
+    </div> 
+    <script type="text/javascript">
+        const clickArea= document.querySelector('.inner-div');
+const clickCount=  document.querySelector('.clickCount');
+
+let likeCount=0;
+let like=likeCount+5;
+
+{/* <i class="fas fa-heart"></i> */}
+
+const showHeart = (e) => {
+    const heart=document.createElement('i');
+    heart.classList.add('fas');
+    heart.classList.add('fa-heart');
+    clickArea.appendChild(heart);
+
+    setTimeout( () =>{
+        heart.remove();
+    },800)
+
+}
+const showMessage = (e)=>{
+   
+      while(likeCount==like){
+          alert("Hau hela au kana 😍\nbohut bhala paucha");
+          like+=5;
+          break;
+      }
+}
+
+clickArea.addEventListener('dblclick',(e)=>{
+    clickCount.innerHTML =++likeCount;
+     showHeart(e);
+     showMessage(e);
+})
+
+window.addEventListener('load', function(){
+    var newVideo = document.getElementById('videoElementId');
+    newVideo.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+
+    newVideo.play();
+
+});
+    </script>
+    
+</body>
+</html>
